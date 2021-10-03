@@ -21,7 +21,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     heloCommand = 'HELO Alice\r\n'
     clientSocket.send(heloCommand.encode())
     recv1 = clientSocket.recv(1024).decode()
-    print(recv1)
+    #print(recv1)
     if recv1[:3] != '250':
         print('250 reply not received from server.')
         
@@ -31,7 +31,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     MailFrom = "MAIL FROM: <anyemailid@gmail.com> \r\n"
     clientSocket.send(MailFrom.encode())
     receive2 = clientSocket.recv(1024).decode()
-    print(receive2)
+    #print(receive2)
     # Fill in end
 
     # Send RCPT TO command and print server response.
@@ -39,7 +39,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     RCPT = "RCPT TO: <destination@gmail.com> \r\n"
     clientSocket.send(RCPT.encode())
     receiveRCPT = clientSocket.recv(1024).decode()
-    print(receiveRCPT)
+    #print(receiveRCPT)
     # Fill in end
 
     # Send DATA command and print server response.
@@ -47,21 +47,21 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     DATA = "DATA\r\n"
     clientSocket.send(DATA.encode())
     receiveDATA = clientSocket.recv(1024).decode()
-    print(receiveDATA)
+    #print(receiveDATA)
     # Fill in end
 
     # Send message data.
     # Fill in start
     clientSocket.send(msg.encode())
     receiveMsg = clientSocket.recv(1024).decode()
-    print("receiveMsg: ", receiveMsg)
+    #print("receiveMsg: ", receiveMsg)
     # Fill in end
 
     # Message ends with a single period.
     # Fill in start
     clientSocket.send(endmsg.encode())
     receiveEnd = clientSocket.recv(1024).decode()
-    print("receiveEnd: ", receiveEnd)
+    #print("receiveEnd: ", receiveEnd)
     # Fill in end
 
     # Send QUIT command and get server response.
@@ -69,7 +69,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     quit = "QUIT\r\n"
     clientSocket.send(quit.encode())
     receiveQuit = clientSocket.recv(1024).decode()
-    print("quit: ", receiveQuit)
+    #print("quit: ", receiveQuit)
     clientSocket.close()
     # Fill in end
 
